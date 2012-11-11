@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4D87D441-FD8B-4259-93DA-793E263A8815}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>DataProviders.Android</RootNamespace>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AssemblyName>DataProviders.Android</AssemblyName>
+    <ReleaseVersion>4.6.0</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Mono.CSharp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="BaseDataParameter.cs" />
+    <Compile Include="DataParameterCollection.cs" />
+    <Compile Include="FileDirCommand.cs" />
+    <Compile Include="FileDirConnection.cs" />
+    <Compile Include="FileDirDataParameter.cs" />
+    <Compile Include="FileDirDataReader.cs" />
+    <Compile Include="GedcomCommand.cs" />
+    <Compile Include="GedcomConnection.cs" />
+    <Compile Include="GedcomDataParameter.cs" />
+    <Compile Include="GedcomDataReader.cs" />
+    <Compile Include="iTunesCommand.cs" />
+    <Compile Include="iTunesConnection.cs" />
+    <Compile Include="iTunesDataParameter.cs" />
+    <Compile Include="iTunesDataReader.cs" />
+    <Compile Include="LexCharReader.cs" />
+    <Compile Include="Lexer.cs" />
+    <Compile Include="LexToken.cs" />
+    <Compile Include="LexTokenList.cs" />
+    <Compile Include="LexTokenTypes.cs" />
+    <Compile Include="LogCommand.cs" />
+    <Compile Include="LogConnection.cs" />
+    <Compile Include="LogDataParameter.cs" />
+    <Compile Include="LogDataReader.cs" />
+    <Compile Include="MultipleStreamReader.cs" />
+    <Compile Include="TxtCommand.cs" />
+    <Compile Include="TxtConnection.cs" />
+    <Compile Include="TxtDataParameter.cs" />
+    <Compile Include="TxtDataReader.cs" />
+    <Compile Include="XmlCommand.cs" />
+    <Compile Include="XmlConnection.cs" />
+    <Compile Include="XmlDataParameter.cs" />
+    <Compile Include="XmlDataReader.cs" />
+  </ItemGroup>
+</Project>
