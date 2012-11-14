@@ -33,8 +33,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Text;
+#if !TargetAndroid
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+#endif
 using fyiReporting.RDL.Utility;
 using System.Security;
 
@@ -70,17 +72,24 @@ namespace fyiReporting.RDL
         static readonly int MEASUREMAX = 32;  //  guess I'm wrong -- .Net 2 doesn't seem to have a limit; 1.1 limit was 32
 
         #region PdfElements Rewrite in iTextSharp (Sinnovasoft add April 14 2010)
+
+#if !TargetAndroid
         Document pdfdocument = new Document();
-        MemoryStream ms = new MemoryStream();
+        MemoryStream ms = new MemoryStream();	
         PdfContentByte cb;
+	
+       
         /// <summary>
         /// List itextSharp Basefont added
         /// </summary>
         private List<BaseFont> BaseFonts = new List<BaseFont>();
+
         /// <summary>
         /// List font name
         /// </summary>
         private List<string> BaseFontsname = new List<string>();
+
+
         /// <summary>
         /// Page line element at the X Y to X2 Y2 position
         /// </summary>
@@ -771,6 +780,8 @@ namespace fyiReporting.RDL
 
             return;
         }
+#endif
+
         #endregion
 
         //Replaced from forum, User: Aulofee http://www.fyireporting.com/forum/viewtopic.php?t=793
@@ -835,6 +846,7 @@ namespace fyiReporting.RDL
 
             if (r.ItextPDF)
             {
+#if !TargetAndroid
                 PdfWriter writer = PdfWriter.GetInstance(pdfdocument, ms);
                 pdfdocument.Open();
                 cb = writer.DirectContent;
@@ -843,7 +855,7 @@ namespace fyiReporting.RDL
                 pdfdocument.AddCreator("MyFyiReporting");
                 pdfdocument.AddSubject(r.Description);
                 pdfdocument.AddTitle(r.Name);
-
+#endif
             }
             else
             {
@@ -858,9 +870,11 @@ namespace fyiReporting.RDL
         {
             //Write everything 
             int size = 0;
-            #region ItextsharpPDF handler
+    
+
             if (r.ItextPDF)
             {
+#if !TargetAndroid
                 if (outline.Bookmarks.Count > 0)
                 {
                     //Not handler TODO
@@ -872,6 +886,7 @@ namespace fyiReporting.RDL
                 ms.Dispose();
                 BaseFonts.Clear();
                 BaseFontsname.Clear();
+#endif
             }
             else
             {
@@ -906,7 +921,7 @@ namespace fyiReporting.RDL
                     info.objectNum, out size), 0, size);
                 filesize += size;
             }
-            #endregion
+        
             return;
         }
 
@@ -925,9 +940,11 @@ namespace fyiReporting.RDL
                 pageTree.AddPage(page.objectNum);
                 if (r.ItextPDF)
                 {
+#if !TargetAndroid
                     //Itextsharp pdf handler, set pagesize
                     pdfdocument.SetPageSize(new iTextSharp.text.Rectangle(r.ReportDefinition.PageWidth.ToPoints(), r.ReportDefinition.PageHeight.ToPoints()));
                     pdfdocument.NewPage();
+#endif 
                 }
                 //Create object that presents the elements in the page
                 elements = new PdfElements(page, pSize);
@@ -1011,11 +1028,12 @@ namespace fyiReporting.RDL
                        
                             if (r.ItextPDF)
                             {
-
+#if !TargetAndroid
                                 iAddImage(images, bgImg.Name,
                                                 content.objectNum, bgImg.SI, bgImg.ImgFormat,
                                                 currX, currY, imW, imH, RectangleF.Empty, bgImg.ImageData, bgImg.SamplesW, bgImg.SamplesH, null, pi.Tooltip);
-                            }
+#endif
+							}
                             else
                             {
                                 elements.AddImage(images, bgImg.Name,
@@ -1045,8 +1063,10 @@ namespace fyiReporting.RDL
 
                     if (r.ItextPDF)
                     {
+#if !TargetAndroid
                         iAddText(pt.X, pt.Y, pt.H, pt.W, sa, pt.SI,
                         fonts, textwidth, pt.CanGrow, pt.HyperLink, pt.NoClip, pt.Tooltip);
+#endif
                     }
                     else
                     {
@@ -1068,7 +1088,9 @@ namespace fyiReporting.RDL
 
                     if (r.ItextPDF)
                     {
+#if !TargetAndroid
                         iAddLine(pl.X, pl.Y, pl.X2, pl.Y2, pl.SI);
+#endif
                     }
                     else
                     {
@@ -1085,7 +1107,9 @@ namespace fyiReporting.RDL
 
                     if (r.ItextPDF)
                     {
+#if !TargetAndroid
                         iAddEllipse(pe.X, pe.Y, pe.H, pe.W, pe.SI, pe.HyperLink);
+#endif
                     }
                     else
                     {
@@ -1158,9 +1182,11 @@ namespace fyiReporting.RDL
                        
                         if (r.ItextPDF)
                         {
+#if !TargetAndroid
                             iAddImage(images, i.Name, content.objectNum, i.SI, i.ImgFormat,
                             adjustedRect.X, adjustedRect.Y, adjustedRect.Width, adjustedRect.Height, clipRect, i.ImageData, i.SamplesW, i.SamplesH, i.HyperLink, i.Tooltip);
-                        }
+#endif
+						}
                         else
                         {
                             elements.AddImage(images, i.Name, content.objectNum, i.SI, i.ImgFormat,
@@ -1179,7 +1205,9 @@ namespace fyiReporting.RDL
 
                     if (r.ItextPDF)
                     {
+#if !TargetAndroid
                         iAddRectangle(pr.X, pr.Y, pr.H, pr.W, pi.SI, pi.HyperLink, patterns, pi.Tooltip);
+#endif
                     }
                     else
                     {
@@ -1195,7 +1223,9 @@ namespace fyiReporting.RDL
 
                     if (r.ItextPDF)
                     {
+#if !TargetAndroid
                         iAddPie(pp.X, pp.Y, pp.H, pp.W, pi.SI, pi.HyperLink, patterns, pi.Tooltip);
+#endif
                     }
                     else
                     {
@@ -1211,7 +1241,9 @@ namespace fyiReporting.RDL
 
                     if (r.ItextPDF)
                     {
+#if !TargetAndroid
                         iAddPolygon(ppo.Points, pi.SI, pi.HyperLink, patterns);
+#endif
                     }
                     else
                     {
@@ -1227,7 +1259,9 @@ namespace fyiReporting.RDL
 
                     if (r.ItextPDF)
                     {
+#if !TargetAndroid
                         iAddCurve(pc.Points, pi.SI);
+#endif
                     }
                     else
                     {

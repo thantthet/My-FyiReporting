@@ -24,7 +24,7 @@ namespace fyiReporting.CRI
 
         public void DrawImage(ref Bitmap bm)
         {
-            DrawImage(ref bm, _code39.ToUpper());
+			DrawImage(ref bm, _code39.ToUpper());
         }
 
         /// <summary>

@@ -28,8 +28,12 @@ using System.Collections.Specialized;
 using System.Reflection;
 using System.Data;
 using System.Data.SqlClient;
+#if !TargetAndroid
 using System.Data.OleDb;
 using System.Data.Odbc;
+#endif
+
+
 using System.IO;
 using fyiReporting.RDL;
 

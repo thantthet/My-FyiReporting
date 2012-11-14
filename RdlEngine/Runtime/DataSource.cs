@@ -25,8 +25,6 @@ using System;
 using System.Xml;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.OleDb;
-using System.Data.Odbc;
 using System.IO;
 
 namespace fyiReporting.RDL

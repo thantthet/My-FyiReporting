@@ -28,7 +28,9 @@ using System.Xml;
 using System.Reflection;
 using System.CodeDom;
 using System.CodeDom.Compiler;
+#if !TargetAndroid
 using Microsoft.VisualBasic;
+#endif
 using System.Text;
 using System.IO;
 using System.Threading;

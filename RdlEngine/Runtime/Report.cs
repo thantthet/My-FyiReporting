@@ -66,7 +66,12 @@ namespace fyiReporting.RDL
 
 
         // - Added due to Embedded font bug. Solution posted by sinnovasoft. http://www.fyireporting.com/forum/viewtopic.php?t=1049
-        private bool _itextpdf = true;
+#if TargetAndroid
+		private bool _itextpdf = false;
+#else
+		private bool _itextpdf = true;
+#endif
+        
         /// <summary> 
         ///  True: Renderpdf will use Add elements by itextsharp code; 
         ///  False : Render pdf by the old way if my code gets error or don't need font embedded. 
