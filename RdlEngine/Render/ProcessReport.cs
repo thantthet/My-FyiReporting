@@ -40,13 +40,17 @@ namespace fyiReporting.RDL
 		XML,
 		ASPHTML,
 		Internal,
+#if !TargetAndroid
 		MHTML,
+#endif
         CSV,
         RTF,
         Word,
         Excel,
+#if !TargetAndroid
         TIF,
         TIFBW                   // black and white tif
+#endif
 	}
 
 	[Serializable]

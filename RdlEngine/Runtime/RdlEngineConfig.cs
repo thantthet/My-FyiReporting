@@ -379,10 +379,18 @@ namespace fyiReporting.RDL
                         cn = new SqlConnection(cstring);
                     break;
                 case "odbc":
+#if !TargetAndroid
                     cn = new OdbcConnection(cstring);
+#else
+				throw new Exception("Invalid Android provider");
+#endif
                     break;
                 case "oledb":
+#if !TargetAndroid
                     cn = new OleDbConnection(cstring);
+#else
+				throw new Exception("Invalid Android provider");
+#endif
                     break;
                 default:
                     if (SqlEntries == null)         // if never initialized; we should init 
@@ -407,17 +415,19 @@ namespace fyiReporting.RDL
             return cn;
         }
 
+		static public bool DoParameterReplacement(string provider, IDbConnection cn)
+		{
+			if (SqlEntries == null)
+				RdlEngineConfigInit();
+			SqlConfigEntry sce = SqlEntries[provider] as SqlConfigEntry;
+			return sce == null ? false : sce.ReplaceParameters;
+		}
+
+
+#if !TargetAndroid
         static public string GetTableSelect(string provider)
         {
             return GetTableSelect(provider, null);
-        }
-
-        static public bool DoParameterReplacement(string provider, IDbConnection cn)
-        {
-            if (SqlEntries == null)
-                RdlEngineConfigInit();
-            SqlConfigEntry sce = SqlEntries[provider] as SqlConfigEntry;
-            return sce == null ? false : sce.ReplaceParameters;
         }
 
         static public string GetTableSelect(string provider, IDbConnection cn)
@@ -443,7 +453,7 @@ namespace fyiReporting.RDL
             }
             return sce.TableSelect;
         }
-
+#endif
         static public string[] GetProviders()
         {
             if (SqlEntries == null)

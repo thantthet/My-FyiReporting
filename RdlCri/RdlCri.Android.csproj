@@ -53,7 +53,6 @@
     <Compile Include="PixelConversions.cs" />
     <Compile Include="QrCode.cs" />
     <Compile Include="XmlHelpers.cs" />
-    <Compile Include="ZXing\AssemblyInfo.cs" />
     <Compile Include="ZXing\BarcodeFormat.cs" />
     <Compile Include="ZXing\Binarizer.cs" />
     <Compile Include="ZXing\BinaryBitmap.cs" />

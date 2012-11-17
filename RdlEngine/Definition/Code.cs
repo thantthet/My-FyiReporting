@@ -62,6 +62,12 @@ namespace fyiReporting.RDL
 
 		private Assembly GetAssembly()
 		{
+#if TargetAndroid
+			// TODO: find out what do here
+			throw new NotImplementedException("Not supported in android build");
+#else
+
+			
 			// Generate the proxy source code
             List<string> lines = new List<string>();		// hold lines in array in case of error
 
@@ -174,6 +180,8 @@ namespace fyiReporting.RDL
 
 			return Assembly.LoadFrom(cr.PathToAssembly);	// We need an assembly loaded from the file system
 			//   or instantiation of object complains
+
+#endif
 		}
 
 		internal Type CodeType()
@@ -193,6 +201,7 @@ namespace fyiReporting.RDL
 					string.Format("Unable to load instance of Code\r\n{0}", e.Message));
 			}
 			return t;
+
 		}
 
 		internal object Load(Report rpt)

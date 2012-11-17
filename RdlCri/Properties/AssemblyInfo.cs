@@ -9,9 +9,9 @@ using System.Security;
 [assembly: AssemblyTitle("RdlCri")]
 [assembly: AssemblyDescription("RDL Project CustomReportItem Library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("fyiReporting Software, LLC")]
+[assembly: AssemblyCompany("My-FyiReporting")]
 [assembly: AssemblyProduct("CRI")]
-[assembly: AssemblyCopyright("Copyright ©  2006-2008")]
+[assembly: AssemblyCopyright("Copyright ©  2006-2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

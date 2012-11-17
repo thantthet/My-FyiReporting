@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing.Android">
       <HintPath>..\References\Android\System.Drawing.Android.dll</HintPath>
     </Reference>
-    <Reference Include="System.Data" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
@@ -60,6 +60,7 @@
     <Folder Include="Render\" />
     <Folder Include="Runtime\" />
     <Folder Include="Utility\" />
+    <Folder Include="Definition\EMFConverter\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Definition\Action.cs" />
@@ -382,6 +383,25 @@
     <Compile Include="Runtime\ZipWrap.cs" />
     <Compile Include="Utility\Measurement.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMF.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFRecordObject.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFDrawingRecords\Comment.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFDrawingRecords\DrawBase.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFDrawingRecords\DrawCurve.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFDrawingRecords\DrawEllipse.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFDrawingRecords\DrawLines.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFDrawingRecords\DrawPie.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFDrawingRecords\DrawRects.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFDrawingRecords\DrawString.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFDrawingRecords\FillEllipse.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFDrawingRecords\FillPie.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFDrawingRecords\FillPolygon.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFDrawingRecords\FillRects.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFObjects\EMFBrush.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFObjects\EMFFont.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFObjects\EMFPen.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFObjects\EMFStringFormat.cs" />
+    <Compile Include="Definition\EMFConverter\EMFRecords\EMFTransform\EMFSetPageTransform.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="RdlEngineConfig.xml" />

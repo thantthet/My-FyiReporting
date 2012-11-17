@@ -84,6 +84,7 @@ namespace fyiReporting.RDL
         private string _FontFolder = "";
 
 
+#if !TargetAndroid
         /// <summary> 
         /// Default I get embedded fonts in Fonts folder in current 
         /// folder RdlEngine.dll in, can set font folder here 
@@ -93,6 +94,7 @@ namespace fyiReporting.RDL
             get { return _FontFolder; }
             set { _FontFolder = value; }
         }
+#endif
 
 		/// <summary>
 		/// Construct a runtime Report object using the compiled report definition.
@@ -100,8 +102,9 @@ namespace fyiReporting.RDL
 		/// <param name="r"></param>
 		public Report(ReportDefn r)
 		{
+#if !TargetAndroid
             this.FontFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Fonts);
-
+#endif
 
 			_Report = r;
 			_Cache = new RCache();
@@ -197,6 +200,7 @@ namespace fyiReporting.RDL
 					ip = new RenderPdf(this, sg);
 					_Report.Run(ip);
 					break;
+#if !TargetAndroid
                 case OutputPresentationType.TIF:
                     ip = new RenderTif(this, sg);
                     _Report.Run(ip);
@@ -207,6 +211,7 @@ namespace fyiReporting.RDL
                     ip = rtif;
                     _Report.Run(ip);
                     break;
+#endif
                 case OutputPresentationType.XML:
 					if (_Report.DataTransform != null && _Report.DataTransform.Length > 0)
 					{
@@ -221,9 +226,11 @@ namespace fyiReporting.RDL
 						_Report.Run(ip);
 					}
 					break;
+#if !TargetAndroid
 				case OutputPresentationType.MHTML:
 					this.RunRenderMht(sg);
 					break;
+#endif
                 case OutputPresentationType.CSV:
                     ip = new RenderCsv(this, sg);
                     _Report.Run(ip);
@@ -257,6 +264,7 @@ namespace fyiReporting.RDL
             return;
 		}
 
+#if !TargetAndroid
 		private void RunRenderMht(IStreamGen sg)
 		{
 			OneFileStreamGen temp = null;
@@ -308,7 +316,7 @@ namespace fyiReporting.RDL
                 _Cache = new RCache();
             }
 		}
-
+#endif
 		/// <summary>
 		/// RunRenderPdf will render a Pdf given the page structure
 		/// </summary>
@@ -335,6 +343,7 @@ namespace fyiReporting.RDL
 			return;
 		}
 
+#if !TargetAndroid
         /// <summary>
         /// RunRenderTif will render a TIF given the page structure
         /// </summary>
@@ -361,6 +370,7 @@ namespace fyiReporting.RDL
 
             return;
         }
+#endif
 
 		private void RunRenderXmlTransform(IStreamGen sg, MemoryStreamGen msg)
 		{
