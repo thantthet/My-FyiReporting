@@ -414,6 +414,9 @@ namespace fyiReporting.RDL
                 case "itunes":
                     cn = new fyiReporting.Data.iTunesConnection(cstring);
                     break;
+				case "json":
+					cn = new fyiReporting.Data.JsonConnection(cstring);
+					break;
 #if EnableBundleLinux
                     // See properties -> Build -> Conditional compilation symbols
                 case "sqlite":

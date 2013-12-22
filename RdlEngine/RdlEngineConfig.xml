@@ -92,6 +92,20 @@
       <TableSelect>SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME NOT LIKE 'pg_%' ORDER BY 1</TableSelect> 
       <Interface>SQL</Interface> 
     </DataSource>
+		<DataSource>
+			<DataProvider>WebService</DataProvider>
+			<CodeModule>DataProviders.dll</CodeModule>
+			<ClassName>fyiReporting.Data.WebServiceConnection</ClassName>
+			<TableSelect></TableSelect>
+			<Interface>WebService</Interface>
+		</DataSource>
+		<DataSource>
+			<DataProvider>Json</DataProvider>
+			<CodeModule>DataProviders.dll</CodeModule>
+			<ClassName>fyiReporting.Data.JsonConnection</ClassName>
+			<TableSelect></TableSelect>
+			<Interface>WebService</Interface>
+		</DataSource>
 	</DataSources>
 	<Compression>
 		<CodeModule>ICSharpCode.SharpZipLib.dll</CodeModule>

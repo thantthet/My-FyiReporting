@@ -37,7 +37,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -128,6 +129,9 @@
     <OutputPath>bin\x64\BundleLinux\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\References\dot net 4\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -172,6 +176,10 @@
     <Compile Include="FileDirDataReader.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="JsonCommand.cs" />
+    <Compile Include="JsonConnection.cs" />
+    <Compile Include="JsonDataParameter.cs" />
+    <Compile Include="JsonDataReader.cs" />
     <Compile Include="LexCharReader.cs">
       <SubType>Code</SubType>
     </Compile>

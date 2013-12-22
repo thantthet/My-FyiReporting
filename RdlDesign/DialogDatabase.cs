@@ -1381,7 +1381,10 @@ namespace fyiReporting.RdlDesign
                     break;
                 case "PostgreSQL":
                     tbConnection.Text = "Server=127.0.0.1;Port=5432;Database=myDataBase;User Id=myUsername;Password=myPassword;";
-                    break;               
+                    break;
+				case "Json":
+					tbConnection.Text = "filepath=";
+					break;
                 default:
                     tbConnection.Text = "";
                     break;
