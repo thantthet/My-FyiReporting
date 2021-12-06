@@ -1326,8 +1326,19 @@ namespace fyiReporting.RdlViewer
         // 15052008 AJM - Updating Render notification window - This could be improved to show current action in the future
         private void showWait()
         {
-            DialogWait wait = new DialogWait(this, StopWaitDialog);
-            wait.ShowDialog();
+			try
+			{
+				DialogWait wait = new DialogWait(this, StopWaitDialog);
+				wait.ShowDialog();
+			}
+			catch (ObjectDisposedException ode)
+            {
+                // Just let it go
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public bool StopWaitDialog()
